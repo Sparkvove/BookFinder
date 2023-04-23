@@ -1,5 +1,5 @@
-using BookFinder.DataProvider;
 using BookFinder.Repositories;
+using BookFinder.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IBookRepository, BookRepository>();
+builder.Services.AddTransient<IRecommenderService, RecommenderService>();
 var app = builder.Build();
-BookDB.PopulateBooks();
+DataProvider.PrepareData();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
