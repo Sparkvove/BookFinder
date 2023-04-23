@@ -2,12 +2,9 @@
 using BookFinder.Infrastructure.Services;
 using MediatR;
 
-namespace BookFinder.Infrastructure.CQRS.Queries
+namespace BookFinder.API.CQRS.Queries
 {
-    public class GetAllBooksQuery : IRequest<IEnumerable<Book>>
-    {
-    }
-
+    public record GetAllBooksQuery() : IRequest<IEnumerable<Book>>;
     public class GetAllBooksQueryHandler : IRequestHandler<GetAllBooksQuery, IEnumerable<Book>>
     {
         private readonly IBookService _bookService;

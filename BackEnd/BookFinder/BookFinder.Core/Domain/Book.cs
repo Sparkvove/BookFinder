@@ -1,18 +1,7 @@
-﻿namespace BookFinder.Core.Domain
+﻿using BookFinder.Core.Domain.ValueObjects;
+
+namespace BookFinder.Core.Domain
 {
-    public class Book
-    {
-        public Guid Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Description { get; set; }
-
-        public Book(string Title, string Author, string Description)
-        {
-            this.Title = Title;
-            this.Author = Author;
-            this.Description = Description;
-        }
-
-    }
+    public record Book(Guid Id, string Title, Person Author, string Description, IEnumerable<string> Genres, IEnumerable<string> Tags, float Score);
+    
 }
