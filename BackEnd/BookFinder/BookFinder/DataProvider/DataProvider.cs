@@ -1,8 +1,8 @@
-﻿using BookFinder.Models;
+﻿using BookFinder.Domain;
 
 
 
-    public static class DataProvider
+public static class DataProvider
     {
         public static List<Book> BookList = new();
         public static List<User> UserList = new();

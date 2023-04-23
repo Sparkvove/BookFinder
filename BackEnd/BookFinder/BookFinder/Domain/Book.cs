@@ -1,4 +1,4 @@
-﻿namespace BookFinder.Models
+﻿namespace BookFinder.Domain
 {
     public class Book
     {
@@ -9,7 +9,7 @@
 
         public Book(int id, string Title, string Author, string Description)
         {
-            this.Id = id;
+            Id = id;
             this.Title = Title;
             this.Author = Author;
             this.Description = Description;

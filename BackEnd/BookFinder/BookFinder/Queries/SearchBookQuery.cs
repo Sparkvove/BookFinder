@@ -1,4 +1,4 @@
-﻿using BookFinder.Models;
+﻿using BookFinder.Domain;
 using MediatR;
 
 namespace BookFinder.Queries
