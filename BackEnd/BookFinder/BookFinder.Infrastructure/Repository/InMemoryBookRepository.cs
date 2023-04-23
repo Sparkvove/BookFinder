@@ -8,10 +8,10 @@ namespace BookFinder.Infrastructure.Repository
     {
         private static ISet<Book> _books = new HashSet<Book>
         {
-            new Book(Guid.NewGuid(),"title2", Person.CreatePerson(Guid.NewGuid(), "Branderson", null, null), "desc2", null, null, 4),
-            new Book(Guid.NewGuid(),"title1", Person.CreatePerson(Guid.NewGuid(),"Antionio","banderas", "autor1"), "desc1", null, null, 5),
-            new Book(Guid.NewGuid(),"title2", Person.CreatePersonWithOnlyAlias(Guid.NewGuid(), "autor2"), "desc2", null, null, 4),
-            new Book(Guid.NewGuid(),"title3", Person.CreatePersonWithOnlyAlias(Guid.NewGuid(), "autor3"), "desc3", null, null, 3)
+            new Book(Guid.NewGuid(),"title2", Person.CreatePerson(Guid.NewGuid(), "Branderson", null, null), "desc2", new List<string>{"Fantasy","History"}, new List<string>{""}, 4),
+            new Book(Guid.NewGuid(),"title1", Person.CreatePerson(Guid.NewGuid(),"Antionio","banderas", "autor1"), "desc1",  new List<string>{"Fantasy"}, new List<string>{""}, 5),
+            new Book(Guid.NewGuid(),"title2", Person.CreatePersonWithOnlyAlias(Guid.NewGuid(), "autor2"), "desc2", new List<string>{""}, new List<string>{"Action"}, 4),
+            new Book(Guid.NewGuid(),"title3", Person.CreatePersonWithOnlyAlias(Guid.NewGuid(), "autor3"), "desc3", new List<string>{""}, new List<string>{""}, 3)
         };
         public Book Find(string title)
         {

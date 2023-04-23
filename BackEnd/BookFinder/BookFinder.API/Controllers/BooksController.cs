@@ -28,5 +28,14 @@ namespace BookFinder.API.Controllers
             return Ok(_mediator.Send(query));
         }
 
+        [HttpPost("/Search")]
+        public IActionResult Search(SearchBody search)
+        {
+            var query = new SearchBooksQuery(search.Genres, search.Tags);
+            return Ok(_mediator.Send(query));
+        }
+
+        public record SearchBody(IEnumerable<string>? Genres, IEnumerable<string>? Tags);
+
     }
 }
