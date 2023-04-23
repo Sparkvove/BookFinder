@@ -1,6 +1,5 @@
-﻿using BookFinder.Models;
-using BookFinder.Repositories;
-using BookFinder.Services;
+﻿using BookFinder.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -10,50 +9,42 @@ namespace BookFinder.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private IBookRepository _bookRepository;
-        private IRecommenderService _recommender;
+        private readonly IMediator _mediator;
 
-        public BooksController(IBookRepository bookRepository, IRecommenderService recommender)
+        public BooksController(IMediator mediator)
         {
-            _bookRepository = bookRepository;
-            _recommender = recommender;
+            _mediator = mediator;
         }
         // GET: api/<BooksController>
         [HttpGet]
-        public IEnumerable<Book> Get()
+        public async Task<IActionResult> Get()
         {
-            return _bookRepository.GetBooks();
+           var query  = new GetAllBooksQuery();
+           return Ok(await _mediator.Send(query));
         }
 
         // GET api/<BooksController>/5
         [HttpGet("{id}")]
-        public Book? Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return _bookRepository.GetBookById(id);
+            var query = new GetBookByIdQuery(id);
+            return Ok(await _mediator.Send(query));
         }
-
         // GET api/<BooksController>/Recommended/{id}
-        [HttpGet("/Recommended/{id}")]
-        public IEnumerable<Book> Recommended(int id)
+        [HttpGet("/Recommended/{userId}")]
+        public async Task<IActionResult> GetRecommended(int userId)
         {
-            var user = DataProvider.UserList.SingleOrDefault(x => x.Id == id);
-            if(user is null)
-            {
-                return _bookRepository.GetBooks();
-            }
-            return _recommender.GetBookRecommendation(user.BookList);
+            var query = new GetRecommendedBooksQuery(userId);
+            return Ok(await _mediator.Send(query));
 
         }
 
         // GET api/<BooksController>/Search
         [HttpPost("/Search")]
-        public IEnumerable<Book> Search(SearchBody search)
+        public async Task<IActionResult> Search(SearchBookQuery query)
         {
-            var foundBooks = DataProvider.BookList.FindAll(x => x.Title == search.title || x.Description == search.desc || x.Author == search.author);
-            return foundBooks;
+            return Ok(await _mediator.Send(query));
         }
-
-        public record SearchBody(string? title, string? desc, string? author);
 
     }
 }
