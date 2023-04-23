@@ -1,4 +1,5 @@
-﻿using BookFinder.Models;
+﻿using BookFinder.Domain;
+
 namespace BookFinder.Repositories
 {
     public class BookRepository : IBookRepository

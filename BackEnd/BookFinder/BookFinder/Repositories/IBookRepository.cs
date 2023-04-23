@@ -1,4 +1,4 @@
-﻿using BookFinder.Models;
+﻿using BookFinder.Domain;
 
 namespace BookFinder.Repositories
 {

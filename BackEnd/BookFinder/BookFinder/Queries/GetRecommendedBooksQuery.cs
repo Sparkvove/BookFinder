@@ -1,4 +1,4 @@
-﻿using BookFinder.Models;
+﻿using BookFinder.Domain;
 using MediatR;
 
 namespace BookFinder.Queries
@@ -10,13 +10,9 @@ namespace BookFinder.Queries
         public async Task<IEnumerable<Book>> Handle(GetRecommendedBooksQuery request, CancellationToken cancellationToken)
         {
             var user = DataProvider.UserList.SingleOrDefault(x => x.Id == request.userId);
-            if (user is null)
-            {
-                throw new Exception("User Not found");
-            }
 
-            // Create Service to get recommended books
-            // RecommendService(user)
+            var recommender = new Recommender();
+            recommender.GetBookRecommendations(user, DataProvider.BookList);
 
             return await Task.FromResult(DataProvider.BookList);
         }
