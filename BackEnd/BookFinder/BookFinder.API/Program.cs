@@ -1,7 +1,6 @@
 using BookFinder.Core.Repositories;
 using BookFinder.Infrastructure.Repository;
 using BookFinder.Infrastructure.Services;
-using MediatR;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

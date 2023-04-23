@@ -1,4 +1,5 @@
 ﻿using BookFinder.Core.Domain;
+using BookFinder.Core.Domain.ValueObjects;
 using BookFinder.Core.Repositories;
 
 namespace BookFinder.Infrastructure.Services
@@ -22,7 +23,13 @@ namespace BookFinder.Infrastructure.Services
             return books;
         }
 
-        public Book Find(string? title, string? description, string? author)
+        public Book GetByGuid(Guid guid)
+        {
+            var book = _bookRepository.Get(guid);
+            return book;
+        }
+
+        public Book Find(string? title, string? description, Person? author)
         {
             var books = _bookRepository.GetAll();
             return books.SingleOrDefault(x => x.Title == title || x.Description == description || x.Author == author);
