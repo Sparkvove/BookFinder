@@ -40,5 +40,11 @@ namespace BookFinder.Infrastructure.Services
         {
             throw new NotImplementedException();
         }
+
+        public Book GetByTitle(string title)
+        {
+            var book = _bookRepository.Find(title);
+            return book;
+        }
     }
 }

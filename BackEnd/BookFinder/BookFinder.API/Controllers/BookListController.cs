@@ -28,10 +28,9 @@ namespace BookFinder.API.Controllers
 
         // GET: api/<BookListController>
         [HttpPost]
-        public IActionResult AddToList(string bookTitle, string username)
+        public IActionResult AddToList([FromBody] AddBookToUserBookListCommand request)
         {
-            var command = new AddBookToUserBookListCommand(bookTitle, username);
-            return Ok(_mediator.Send(command));
+            return Ok(_mediator.Send(request));
         }
 
     }

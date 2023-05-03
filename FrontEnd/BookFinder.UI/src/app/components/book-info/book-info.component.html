@@ -1,0 +1,11 @@
+<div *ngIf="book">
+  {{ book?.title }}
+  {{ book?.author.fullName }}
+  {{ book?.description }}
+  {{ book?.genres }}
+  {{ book?.tags }}
+  {{ book?.score }}
+  <button mat-button color="primary" (click)="onAddToList()">
+    Add To List
+  </button>
+</div>
