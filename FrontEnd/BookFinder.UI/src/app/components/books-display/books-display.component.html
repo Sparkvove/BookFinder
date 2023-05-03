@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Tytuł</th>
+      <th>Opis</th>
+      <th>Kategorie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>
+        <a href="#"> {{ book.title }}</a>
+      </td>
+      <td>{{ book.description }}</td>
+      <td>{{ book.genres }}</td>
+    </tr>
+  </tbody>
+</table>
