@@ -1,5 +1,4 @@
-﻿using BookFinder.Core.Domain;
-using BookFinder.Core.Repositories;
+﻿using BookFinder.Core.Repositories;
 using MediatR;
 
 namespace BookFinder.API.CQRS.Commands
