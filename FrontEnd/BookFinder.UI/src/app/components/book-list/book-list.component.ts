@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { BooksService } from 'src/app/services/books.service';
+import { Component } from "@angular/core";
+import { BooksService } from "src/app/services/books.service";
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css'],
+  selector: "app-book-list",
+  templateUrl: "./book-list.component.html",
+  styleUrls: ["./book-list.component.css"],
 })
 export class BookListComponent {
   books: any[] = [];
@@ -12,7 +12,7 @@ export class BookListComponent {
   constructor(private bookService: BooksService) {}
 
   ngOnInit(): void {
-    this.bookService.getBooks().subscribe((response) => {
+    this.bookService.getUserBooks().subscribe((response) => {
       this.books = response?.result;
       console.log(this.books);
     });

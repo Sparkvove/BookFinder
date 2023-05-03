@@ -1,4 +1,5 @@
 ﻿using BookFinder.API.CQRS.Queries;
+using BookFinder.Infrastructure.CQRS.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,13 @@ namespace BookFinder.API.Controllers
         public IActionResult Get(Guid guid)
         {
             var query = new GetBookByGuidQuery(guid);
+            return Ok(_mediator.Send(query));
+        }
+
+        [HttpGet("/GetByTitle/{title}")]
+        public IActionResult GetByTitle(string title)
+        {
+            var query = new GetBookByTitleQuery(title);
             return Ok(_mediator.Send(query));
         }
 

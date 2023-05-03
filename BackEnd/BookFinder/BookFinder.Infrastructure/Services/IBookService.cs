@@ -7,6 +7,7 @@ namespace BookFinder.Infrastructure.Services
     {
         IEnumerable<Book> GetAll();
         Book GetByGuid(Guid id);
+        Book GetByTitle(string title);
         IEnumerable<Book> GetRecommended();
         Book Find(string? title, string? description, Person? author);
 

@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IBookRepository, InMemoryBookRepository>();
+builder.Services.AddScoped<IUserRepository, InMemoryUserRepository>();
 
 builder.Services.AddCors(options => options.AddPolicy(name: "BookFinderAngularUI",
     policy =>
