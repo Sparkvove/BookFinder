@@ -14,7 +14,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IBookRepository, InMemoryBookRepository>();
-builder.Services.AddScoped<IUserRepository, InMemoryUserRepository>();
+
+builder.Services.AddCors(options => options.AddPolicy(name: "BookFinderAngularUI",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+    }));
+
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -22,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("BookFinderAngularUI");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
