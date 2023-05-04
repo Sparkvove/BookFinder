@@ -1,11 +1,24 @@
 <div *ngIf="book">
-  {{ book?.title }}
-  {{ book?.author.fullName }}
-  {{ book?.description }}
-  {{ book?.genres }}
-  {{ book?.tags }}
-  {{ book?.score }}
-  <button mat-button color="primary" (click)="onAddToList()">
-    Add To List
-  </button>
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="{{ book.img }}" alt="Book cover" />
+    </div>
+    <div class="book-info">
+      <h2 class="book-title">{{ book?.title }}</h2>
+      <h3 class="book-author">{{ book?.author.fullName }}</h3>
+      <p class="book-description">{{ book?.description }}</p>
+      <div class="book-categories">
+        <h4>Genres:</h4>
+        <ul>
+          <li *ngFor="let genre of book?.genres">{{ genre }}</li>
+        </ul>
+      </div>
+      <div class="book-tags">
+        <h4>Tags:</h4>
+        <ul>
+          <li *ngFor="let tag of book?.tags">{{ tag }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

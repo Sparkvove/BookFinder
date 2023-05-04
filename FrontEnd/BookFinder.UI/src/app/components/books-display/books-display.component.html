@@ -1,18 +1,8 @@
-<table>
-  <thead>
-    <tr>
-      <th>Tytuł</th>
-      <th>Opis</th>
-      <th>Kategorie</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let book of books">
-      <td>
-        <a href="book/{{ book.title }}"> {{ book.title }}</a>
-      </td>
-      <td>{{ book.description }}</td>
-      <td>{{ book.genres }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="item" *ngFor="let book of books">
+    <app-book-card
+      [book]="book"
+      (addBookToListEvent)="addBookToList($event)"
+    ></app-book-card>
+  </div>
+</div>
