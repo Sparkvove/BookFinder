@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+  <img mat-card-image src="{{ book.img }}" alt="Book Cover" />
+  <mat-card-header>
+    <mat-card-title>
+      <a href="/book/{{ book.title }}">
+        {{ book.title }}
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle>{{ book.author.fullName }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>{{ book.description.slice(0, 20) }} ...</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!isInUserList">
+    <button mat-button color="primary" (click)="OnAddToList()">
+      Add to List
+    </button>
+  </mat-card-actions>
+</mat-card>
