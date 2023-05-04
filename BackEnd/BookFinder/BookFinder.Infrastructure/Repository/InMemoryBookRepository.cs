@@ -1,7 +1,6 @@
 ﻿using BookFinder.Core.Domain;
 using BookFinder.Core.Domain.ValueObjects;
 using BookFinder.Core.Repositories;
-
 namespace BookFinder.Infrastructure.Repository
 {
     public class InMemoryBookRepository : IBookRepository

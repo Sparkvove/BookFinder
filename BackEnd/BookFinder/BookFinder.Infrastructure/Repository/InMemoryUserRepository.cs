@@ -10,6 +10,7 @@ namespace BookFinder.Infrastructure.Repository
         {
             new User("spark", new List<Book>())
         };
+       
         public void Add(User user)
         {
             _users.Add(user);
@@ -25,24 +26,9 @@ namespace BookFinder.Infrastructure.Repository
             return _users.Single(x => x.Name == username);
         }
 
-        public User GetByEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<User> GetAll()
         {
             return _users;
-        }
-
-        public void Remove(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(User user)
-        {
-            throw new NotImplementedException();
         }
 
         public void AddBook(User user, Book book)

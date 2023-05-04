@@ -19,7 +19,7 @@ namespace BookFinder.Core.Domain.ValueObjects
 
         private int EmptyCount { get; set; } = 0;
 
-        protected Person()
+        public Person()
         {
 
         }
